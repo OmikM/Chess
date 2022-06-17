@@ -1,5 +1,4 @@
-wnica = ["⬜"]*64 #pusta szachownica
-
+wnica = ["⬜︎"]*64 #pusta szachownica
 def wypisz(): #ładne wypisywanie
   for i in range(8):
    i =i*8
@@ -27,14 +26,36 @@ def ruch(pol1, pol2):
       ruchPb(pol1,pol2)
     elif color=="c":
       ruchPc(pol1,pol2)
+  if wnica[pol1][0]=="W":
+    ruchW(pol1,pol2)
+    
 
-def ruchPc(pol1, pol2):
+
+def ruchW(pol1, pol2):
+  if pol2 == pol1:
+    print("Nie możesz wykonać tego ruchu.")
+  elif wnica[pol2]!="⬜︎":
+    print("Bicie.",pol1,wnica[pol2])
+
+  elif True:
+    for i in range(8):
+      if wnica[pol2+8*i] == "Wb":
+        print("Ruch możliwy")
+        wnica[pol1],wnica[pol2] = wnica[pol2],wnica[pol1]
+        
+      else:
+        print(wnica[pol2+8*i])
+        break
+
+  
+
+def ruchS(pol1, pol2, color):
   pass
 def ruchPb(pol1,pol2):
   
   if pol2 == pol1:
     print("Nie możesz wykonać tego ruchu.")
-  elif wnica[pol2]!="⬜":
+  elif wnica[pol2]!="⬜︎":
     print("Bicie.",pol1,wnica[pol2])
   elif pol2 + 8 == pol1:
     wnica[pol1],wnica[pol2] = wnica[pol2],wnica[pol1]
@@ -46,3 +67,4 @@ def ruchPb(pol1,pol2):
 start()
 while True:
   ruch(int(input("skąd: ")),int(input("do kąd: ")))
+  wypisz()
