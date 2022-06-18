@@ -1,6 +1,7 @@
 wnica = ["⬜︎"]*64 #pusta szachownica
 import os
 
+
 def wypisz(): #ładne wypisywanie
   for i in range(8):
    i =i*8
