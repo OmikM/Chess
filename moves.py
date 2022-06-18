@@ -18,6 +18,13 @@ def ruch(pol1, pol2):
   else:
     print("Nie można wykonać ruchu")
 
+def ruchS(pol1,pol2,color):
+  SMoves = [-17,-10,-15,-6,17,10,15,6]
+  for x in SMoves:
+    if pol1+x==pol2:
+      r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
+
+
    
 def ruchW(pol1, pol2):
   if r.board[pol2]!="⬜︎": #czy buicie
