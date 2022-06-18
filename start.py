@@ -1,9 +1,13 @@
 wnica = ["⬜︎"]*64 #pusta szachownica
+import os
 
 def wypisz(): #ładne wypisywanie
   for i in range(8):
    i =i*8
    print(wnica[0+i],wnica[1+i],wnica[2+i],wnica[3+i],wnica[4+i],wnica[5+i],wnica[6+i],wnica[7+i])
+
+def clear():
+  os.system('clear')
     
 def start():
   for i in range(8): #stawianie pionków czarnych

@@ -1,12 +1,17 @@
 import start as s
-import moves
-    
+import moves as m
+import os
+
 board = s.wnica
+
 def run():
-  print("I work")
   s.start()
   while True:
-    moves.ruch(int(input("skąd: ")),int(input("dokąd: ")))
-  s.wypisz()
-if __name__ == "__main__":
-    run()
+    boardstary = board[:] #kopiowanie by móc porównać 
+    m.ruch(int(input("skąd: ")),int(input("dokąd: ")))
+    #s.clear()
+    #if boardstary == board: #Czy zaszła zmiana
+      #print("ruch niemożliwy")
+    s.wypisz()
+if __name__=='__main__':
+  run()
