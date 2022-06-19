@@ -27,3 +27,6 @@ def naLiczbe(tekst):
   a = 8*(int(tekst[1])-1)
   a += litery.index(tekst[0])
   return a
+def naZnaki(liczba):
+  a = litery[liczba%8]+str(liczba//8+1)
+  return a

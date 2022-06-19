@@ -16,4 +16,5 @@ def run():
       print("ruch niemożliwy")
     s.wypisz()
 if __name__=='__main__':
+  print(s.naZnaki(63))
   run()
