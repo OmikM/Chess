@@ -1,5 +1,7 @@
 import main as r
 import start as s
+import os
+
 def ruch(pol1, pol2):
   color = r.board[pol1][1]
   if pol2 == pol1:
@@ -27,7 +29,7 @@ def ruchS(pol1,pol2,color):
 
    
 def ruchW(pol1, pol2):
-  if r.board[pol2]!="⬜︎": #czy buicie
+  if r.board[pol2]!="⬜︎": #czy bicie
     print("Bicie.",pol1,r.board[pol2])
   i= 0
   while pol2+8*i>=0 and pol2+8*i<=63:
