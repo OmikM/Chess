@@ -19,6 +19,8 @@ def ruch(pol1, pol2):
     ruchW(pol1,pol2)
   elif r.board[pol1][0]=="K":
     ruchK(pol1,pol2)
+  elif r.board[pol1][0]=="G":
+    ruchG(pol1,pol2)
   else:
     print("Nie można wykonać ruchu Error 0031")
 
@@ -70,3 +72,24 @@ def ruchW(pol1, pol2):
     else:
       i-=1
 
+def ruchG(pol1,pol2):
+  if r.board[pol2]!="⬜︎": #czy bicie
+    print("Bicie.",pol1,r.board[pol2])
+  i= 0
+  while pol2+9*i>=0 and pol2+9*i<=63:
+    if r.board[pol2+9*i][0]== "G":
+      r.board[pol1],r.board[pol2] = r.board[pol2],r.board[pol1]
+      return None
+    if pol2<pol1:
+      i+=1
+    else:
+      i-=1
+  i = 0
+  while pol2+7*i>=0 and pol2+7*i<=63:
+    if r.board[pol2+7*i][0] == "G":
+      r.board[pol1],r.board[pol2] = r.board[pol2],r.board[pol1]
+      return None
+    if pol2<pol1:
+      i+=1
+    else:
+      i-=1
