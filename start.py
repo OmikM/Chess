@@ -15,7 +15,7 @@ def start():
     wnica[8+i] = "Pc"
   for i in range(8): #stawianie pionków białe
     wnica[48+i] = "Pb"
-  InneFig = ["W","S","G","K","D","G","S","W"]#Figury inne niż pionki w kolejności ustawienia
+  InneFig = ["W","S","G","D","K","G","S","W"]#Figury inne niż pionki w kolejności ustawienia
   for i in range(64):                      
     if i<8:
       wnica[i] = InneFig[i]+"c" #Rozkładanie figur w odpowiedniej kolejności na planszy (białe)
