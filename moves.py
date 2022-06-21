@@ -2,8 +2,10 @@ import main as r
 import start as s
 import pawnMove as pm
 
-def ruch(pol1, pol2):
+def ruch(pol1, pol2, CCzyB):
   color = r.board[pol1][1]
+  if color != ["b","c"][int(CCzyB)]:
+    return None
   if pol2>63:
     return "nie"
   elif r.board[pol1][0]=="S":
