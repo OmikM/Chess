@@ -11,7 +11,7 @@ def run():
     pol1 = s.naLiczbe(input("skąd: "))
     pol2 = s.naLiczbe(input("do kąd: "))
     m.ruch(pol1, pol2)
-    os.system('clear')
+    os.system('cls')
     if boardstary == board: #Czy zaszła zmiana
       print("ruch niemożliwy")
     s.wypisz()

@@ -4,9 +4,7 @@ import pawnMove as pm
 
 def ruch(pol1, pol2):
   color = r.board[pol1][1]
-  if pol2 == pol1:
-    print("Nie możesz wykonać tego ruchu. Error 0032")
-  elif pol2>63:
+  if pol2>63:
     return "nie"
   elif r.board[pol1][0]=="S":
     ruchS(pol1,pol2)
@@ -21,6 +19,8 @@ def ruch(pol1, pol2):
     ruchK(pol1,pol2)
   elif r.board[pol1][0]=="G":
     ruchG(pol1,pol2)
+  elif r.board[pol1][0]=="D":
+    ruchD(pol1,pol2)
   else:
     print("Nie można wykonać ruchu Error 0031")
 
@@ -42,54 +42,52 @@ def ruchS(pol1,pol2):
   for x in SMoves:
     if pol1+x==pol2 and jakDaleko(pol1,pol2)==3:
       r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
+
 def ruchK(pol1,pol2):
   KMoves = [-9,-8,-7,-1,1,7,8,9]
   for x in KMoves:
     if pol1+x==pol2 and jakDaleko(pol1,pol2)<3:
-      print(pol1+x,pol2)
       r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
 
+def helperWG(pol1,pol2,i,con):
+  if pol2<pol1:
+      i+=1
+  else:
+      i-=1
+  if r.board[con]!="⬜︎":
+    i = 10
+  return i
 
 def ruchW(pol1, pol2):
-  if r.board[pol2]!="⬜︎": #czy bicie
-    print("Bicie.",pol1,r.board[pol2])
   i= 0
-  while pol2+8*i>=0 and pol2+8*i<=63:
-    if r.board[pol2+8*i] == "Wb":
+  while pol2+8*i>=0 and pol2+8*i<=63 and i<=8:
+    if pol2+8*i == pol1:
       r.board[pol1],r.board[pol2] = r.board[pol2],r.board[pol1]
       return None
-    if pol2<pol1:
-      i+=1
-    else:
-      i-=1
+    i = helperWG(pol1,pol2,i,pol2+8*i)
   i = 0
-  while (pol2+1*i)%8!=0:
-    if r.board[pol2+1*i] == "Wb":    
+
+  while (pol2+1*i)%8!=0 and i<=8:
+    if pol2+1*i == pol1:    
       r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
       break
-    if pol2<pol1:
-      i+=1
-    else:
-      i-=1
+    i = helperWG(pol1,pol2,i,pol2+1*i)
 
 def ruchG(pol1,pol2):
-  if r.board[pol2]!="⬜︎": #czy bicie
-    print("Bicie.",pol1,r.board[pol2])
   i= 0
-  while pol2+9*i>=0 and pol2+9*i<=63:
-    if r.board[pol2+9*i][0]== "G":
-      r.board[pol1],r.board[pol2] = r.board[pol2],r.board[pol1]
+  while pol2+9*i>=0 and pol2+9*i<=63 and i<=8:
+    if pol2+9*i== pol1:
+      r.board[pol1],r.board[pol2] = "⬜︎",r.board[pol1]
       return None
-    if pol2<pol1:
-      i+=1
-    else:
-      i-=1
+    i = helperWG(pol1,pol2,i,pol2+9*i)
   i = 0
-  while pol2+7*i>=0 and pol2+7*i<=63:
-    if r.board[pol2+7*i][0] == "G":
-      r.board[pol1],r.board[pol2] = r.board[pol2],r.board[pol1]
+
+  while pol2+7*i>=0 and pol2+7*i<=63 and i<=8:
+    if pol2+7*i == pol1:
+      r.board[pol1],r.board[pol2] = "⬜︎",r.board[pol1]
       return None
-    if pol2<pol1:
-      i+=1
-    else:
-      i-=1
+    i = helperWG(pol1,pol2,i,pol2+7*i)
+
+def ruchD(pol1,pol2):
+  ruchW(pol1,pol2)
+  ruchG(pol1,pol2)
