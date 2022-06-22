@@ -1,9 +1,11 @@
 import main as r
 import start as s
 import pawnMove as pm
+from szachy import IsSzach
 
 def ruch(pol1, pol2, CCzyB):
   color = r.board[pol1][1]
+  print("JESTEM")
   if color != ["b","c"][int(CCzyB)]:
     return None
   if pol2>63:
@@ -37,7 +39,6 @@ def jakDaleko(pol1,pol2):
   if y<0:
     y = x*-1
   return y+x
-
 
 def ruchS(pol1,pol2):
   SMoves = [-17,-10,-15,-6,17,10,15,6]

@@ -7,7 +7,7 @@
   ---
 <b>how to change code</b>
 1. Clone repo 
-2. create a new branch: $ git checkout https://github.com/alichtman/stronghold -b name_for_new_branch.
+2. create a new branch: $ git checkout https://github.com/OmikM/Chess -b name_for_new_branch.
 3. Make changes and test 
 4. Submit Pull Request with comprehensive description of changes
 

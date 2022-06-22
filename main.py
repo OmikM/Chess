@@ -1,6 +1,7 @@
 import start as s
 import moves as m
 import os
+from szachy import IsSzach
 
 board = s.wnica
 
@@ -15,6 +16,7 @@ def run():
     pol2 = s.naLiczbe(input("do kąd: "))
     m.ruch(pol1, pol2, ruchCB)
     os.system('cls')
+    IsSzach("b")
     if boardstary == board: #Czy zaszła zmiana
       print("ruch niemożliwy")
     else:
