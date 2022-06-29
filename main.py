@@ -1,14 +1,13 @@
 import start as s
 import moves as m
 import os
-from szachy import IsSzach
-
+import szachy as sz
+# TODO funkcja czy ruch możliwy
 board = s.wnica
 
 def run():
-  global ruchCB # Białe czy czarne True to czarne False to białe
-  ruchCB = False
   s.start()
+  ruchCB = False # Białe czy czarne True to czarne False to
   while True:
     boardstary = board[:] #kopiowanie by móc porównać
     print("player move",["b","c"][int(ruchCB)])
@@ -16,7 +15,8 @@ def run():
     pol2 = s.naLiczbe(input("do kąd: "))
     m.ruch(pol1, pol2, ruchCB)
     os.system('cls')
-    IsSzach("b")
+    print(sz.IsSzach(ruchCB))
+    #sz.IsMat(ruchCB)
     if boardstary == board: #Czy zaszła zmiana
       print("ruch niemożliwy")
     else:

@@ -1,11 +1,10 @@
 import main as r
 import start as s
 import pawnMove as pm
-from szachy import IsSzach
+import szachy as sz
 
 def ruch(pol1, pol2, CCzyB):
   color = r.board[pol1][1]
-  print("JESTEM")
   if color != ["b","c"][int(CCzyB)]:
     return None
   if pol2>63:
@@ -44,13 +43,20 @@ def ruchS(pol1,pol2):
   SMoves = [-17,-10,-15,-6,17,10,15,6]
   for x in SMoves:
     if pol1+x==pol2 and jakDaleko(pol1,pol2)==3:
-      r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
+      r.board[pol1],r.board[pol2]="⬜︎",r.board[pol1]
 
 def ruchK(pol1,pol2):
+  global KMoves
   KMoves = [-9,-8,-7,-1,1,7,8,9]
   for x in KMoves:
     if pol1+x==pol2 and jakDaleko(pol1,pol2)<3:
-      r.board[pol1],r.board[pol2]=r.board[pol2],r.board[pol1]
+      r.board[pol1],r.board[pol2]="⬜︎",r.board[pol1]
+      if r.board[pol2][1]=="b":
+        sz.poleBK = pol2
+      if r.board[pol2][1]=="c":
+        sz.poleCK = pol2
+
+
 
 def helperWG(pol1,pol2,i,con):
   if pol2<pol1:
